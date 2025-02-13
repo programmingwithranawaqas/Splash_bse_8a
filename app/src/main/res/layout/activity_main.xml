@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:gravity="end"
+        >
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rl_bars"
+            >
+            <View
+                android:layout_width="20dp"
+                android:layout_height="100dp"
+                android:background="#FF5722"
+                android:id="@+id/first"
+                />
+            <View
+                android:layout_width="20dp"
+                android:layout_height="120dp"
+                android:background="#FF9800"
+                android:id="@+id/second"
+                android:layout_toRightOf="@id/first"
+                />
+            <View
+                android:layout_width="20dp"
+                android:layout_height="150dp"
+                android:background="#FFC107"
+                android:id="@+id/third"
+                android:layout_toRightOf="@id/second"
+                />
+            <View
+                android:layout_width="20dp"
+                android:layout_height="180dp"
+                android:background="#CDDC39"
+                android:id="@+id/fourth"
+                android:layout_toRightOf="@id/third"
+                />
+        </RelativeLayout>
+
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:gravity="center"
+        >
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/logo"
+            android:id="@+id/ivLogo"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        >
+
+        <TextView
+            android:textSize="20sp"
+            android:id="@+id/tvSlogan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/aclonica"
+            android:text="We Deliver Things Before Deadline" />
+
+    </LinearLayout>
+
+</LinearLayout>
