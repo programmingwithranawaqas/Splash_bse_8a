@@ -3,6 +3,7 @@ package com.example.splash_bse_8a;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -31,6 +32,7 @@ public class Home extends AppCompatActivity {
 
     String username, address, phone, url;
 
+    ImageView ivUrl, ivMap, ivPhone;
 
     // hooks for profile picture
     ImageView ivProfilePic;
@@ -77,6 +79,34 @@ public class Home extends AppCompatActivity {
             getDataLauncher.launch(i);
         });
 
+        ivPhone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Intent.ACTION_DIAL);
+                i.setData(Uri.parse("tel:"+phone));
+                startActivity(i);
+            }
+        });
+
+        ivUrl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                startActivity(i);
+            }
+        });
+
+        ivMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse("geo:0,0?q="+Uri.encode(address)));
+                startActivity(i);
+            }
+        });
+
+
     }
 
     private void init()
@@ -85,6 +115,14 @@ public class Home extends AppCompatActivity {
         btnSbmit = findViewById(R.id.btnSubmit);
         btnGetData = findViewById(R.id.btnGetData);
         tvResult = findViewById(R.id.tvResult);
+        ivMap = findViewById(R.id.ivMap);
+        ivPhone = findViewById(R.id.ivPhone);
+        ivUrl = findViewById(R.id.ivUrl);
+
+        ivMap.setVisibility(View.GONE);
+        ivPhone.setVisibility(View.GONE);
+        ivUrl.setVisibility(View.GONE);
+
         ivProfilePic = findViewById(R.id.ivProfilePic);
         fabSetProfilePic = findViewById(R.id.fab_setProfilePic);
 
@@ -123,6 +161,11 @@ public class Home extends AppCompatActivity {
                           phone = dataIntent.getStringExtra("phone");
                           address = dataIntent.getStringExtra("address");
                           url = dataIntent.getStringExtra("url");
+
+                          ivMap.setVisibility(View.VISIBLE);
+                          ivPhone.setVisibility(View.VISIBLE);
+                          ivUrl.setVisibility(View.VISIBLE);
+
                           Toast.makeText(this, username+"\n"+phone+"\n"+address+"\n"+url, Toast.LENGTH_SHORT).show();
 
                       }
